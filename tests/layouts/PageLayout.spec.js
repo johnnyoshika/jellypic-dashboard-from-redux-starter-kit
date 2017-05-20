@@ -14,7 +14,7 @@ describe('(Layout) PageLayout', () => {
         <Child />
       </PageLayout>
     )
-      .find('.page-layout__viewport')
+      .find('.canvas')
       .should.contain(<Child />)
   })
 })
