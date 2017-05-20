@@ -2,10 +2,10 @@ import React from 'react'
 import './LoginView.scss'
 
 export const LoginView = () => (
-  <div className="canvas-login">
+  <div className="login-container">
     <div className="gutter"></div>
-    <div className="main main-login">
-      <div className="font-lobster text-center flex-mb-40">
+    <div className="login-main">
+      <div className="font-lobster text-center mb-40">
         Jellypic
       </div>
       <div className="text-center">

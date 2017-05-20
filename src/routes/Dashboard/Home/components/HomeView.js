@@ -2,9 +2,9 @@ import React from 'react'
 import './HomeView.scss'
 
 export const HomeView = () => (
-  <div className="canvas-stream">
+  <div className="home-container">
       <div className="gutter"></div>
-      <div className="main main-stream">
+      <div className="home-main">
           <div className="card">
               <div className="card-heading">
                   <div className="card-heading-user">
