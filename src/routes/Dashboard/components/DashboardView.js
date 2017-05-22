@@ -34,8 +34,5 @@ export const DashboardView = ({ children, session }) => (
     </div>
   </div>
 )
-DashboardView.propTypes = {
-  children: PropTypes.node,
-}
 
 export default DashboardView
