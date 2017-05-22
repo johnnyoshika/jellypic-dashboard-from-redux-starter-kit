@@ -11,6 +11,7 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
 * `npm start`
 * Open browser at [http://localhost:3000](http://localhost:3000)
 * In order for Hot Module Replacement (HMR) to work, you need to open the browser on the same domain as HMR's domain. On my Windows machine, this is [http://10.0.75.1:3000](http://10.0.75.1:3000).
+* In order for Facebook Login to work, the browser must be pointing to http://localhost:3000, b/c we can't seem to register 10.0.75.1 as an app domain in our Facebook app settings.
 
 ## Lint
 * `npm run lint`
