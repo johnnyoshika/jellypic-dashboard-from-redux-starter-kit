@@ -1,6 +1,6 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/PageLayout/PageLayout'
-import Dashboard from './Dashboard'
+import Session from './Session'
 import Login from './Login'
 
 /*  Note: Instead of using JSX, we recommend using react-router
@@ -10,7 +10,7 @@ export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
   childRoutes : [
-    Dashboard,
+    Session,
     Login
   ]
 })

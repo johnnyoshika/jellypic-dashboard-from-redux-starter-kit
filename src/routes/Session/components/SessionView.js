@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { IndexLink, Link } from 'react-router'
 import PropTypes from 'prop-types'
-import './DashboardView.scss'
+import './SessionView.scss'
 
-export class DashboardView extends Component {
+export class SessionView extends Component {
   render() {
     return (
       <div className="page">
@@ -39,4 +39,4 @@ export class DashboardView extends Component {
   }
 }
 
-export default DashboardView
+export default SessionView
