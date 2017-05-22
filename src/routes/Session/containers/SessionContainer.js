@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setSession } from '../../../store/session'
+import { setSession } from '../modules/session'
 import SessionView from '../components/SessionView'
 
 const mapDispatchToProps = {

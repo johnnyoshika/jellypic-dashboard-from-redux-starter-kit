@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import locationReducer from './location'
-import sessionReducer from './session'
+import sessionReducer from '../routes/Session/modules/session'
 import loginReducer from '../routes/Login/modules/login'
 
 export const makeRootReducer = (asyncReducers) => {

@@ -23,7 +23,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = { username: 'samsmith' }
+const initialState = null
 export default function sessionReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 

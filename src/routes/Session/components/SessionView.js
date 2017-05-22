@@ -7,7 +7,7 @@ export class SessionView extends Component {
     return (
       <div className="page">
         <div className="header">
-          <div className="gutter">{this.props.session.username}</div>
+          <div className="gutter" />
           <div className="header-content">
             <div className="font-lobster">
               <IndexLink to="/" activeClassName="nav-active">Jellypic</IndexLink>
