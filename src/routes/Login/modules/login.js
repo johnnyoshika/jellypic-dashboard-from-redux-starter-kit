@@ -63,7 +63,7 @@ const ensureFacebookSdkLoaded = (callback) => {
 
   window.fbAsyncInit = () => {
     window.FB.init({
-      appId      : '215604332289047',
+      appId      : FACEBOOK_APP_ID,
       cookie     : false,
       xfbml      : false,
       version    : 'v2.8'
