@@ -3,10 +3,10 @@ import { IndexLink, Link } from 'react-router'
 import PropTypes from 'prop-types'
 import './DashboardView.scss'
 
-export const DashboardView = ({ children }) => (
+export const DashboardView = ({ children, session }) => (
   <div className="page">
     <div className="header">
-      <div className="gutter"></div>
+      <div className="gutter">{session.username}</div>
       <div className="header-content">
         <div className="font-lobster">
           <IndexLink to="/" activeClassName="nav-active">Jellypic</IndexLink>

@@ -1,10 +1,10 @@
-import DashboardView from './components/DashboardView'
+import DashboardContainer from './containers/DashboardContainer'
 import Home from './Home'
 import Profile from './Profile'
 
 // Sync route definition
 export default {
-  component : DashboardView,
+  component: DashboardContainer,
   indexRoute  : Home,
   childRoutes : [
     Profile
