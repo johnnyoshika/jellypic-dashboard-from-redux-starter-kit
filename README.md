@@ -12,6 +12,10 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
 * Open browser at [http://localhost:3000](http://localhost:3000)
 * In order for Hot Module Replacement (HMR) to work, you need to open the browser on the same domain as HMR's domain. On my Windows machine, this is [http://10.0.75.1:3000](http://10.0.75.1:3000).
 
+## Lint
+* `npm run lint`
+* autofix: `npm run lint:fix`
+
 ## Background
 * Started with [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit). Selected this one over the hundreds of others by following this process:
   * List starter kits here: [http://andrewhfarmer.com/starter-project/](http://andrewhfarmer.com/starter-project/)
