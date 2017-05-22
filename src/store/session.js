@@ -6,7 +6,7 @@ export const SET_SESSION = 'SET_SESSION'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function setSession(session = null) {
+export function setSession (session = null) {
   return {
     type    : SET_SESSION,
     payload : session
@@ -23,7 +23,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {username: 'samsmith'}
+const initialState = { username: 'samsmith' }
 export default function sessionReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 

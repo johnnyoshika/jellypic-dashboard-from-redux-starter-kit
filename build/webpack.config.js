@@ -47,10 +47,10 @@ const config = {
   ],
   devServer: {
     proxy: {
-        '/api/*': {
-            target: 'http://localhost:8887',
-            secure: false
-        }
+      '/api/*': {
+        target: 'http://localhost:8887',
+        secure: false
+      }
     }
   }
 }
