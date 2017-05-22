@@ -24,6 +24,7 @@
     "react/prop-types"     : 0,
     "max-len"              : [2, 1000, 2],
     "object-curly-spacing" : [2, "always"],
-    "comma-dangle"         : "off"
+    "comma-dangle"         : "off",
+    "curly"                : 0
   }
 }
