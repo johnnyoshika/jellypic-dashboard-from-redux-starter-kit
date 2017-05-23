@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
-import { setSession } from '../modules/session'
+import { authenticate } from '../modules/session'
 import SessionView from '../components/SessionView'
 
 const mapDispatchToProps = {
-  setSession : setSession
+  authenticate
 }
 
 const mapStateToProps = (state) => ({
