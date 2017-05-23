@@ -63,7 +63,7 @@ export class SessionView extends Component {
           <div className="gutter" />
           <div className="header-content">
             <div className="font-lobster">
-              <IndexLink to="/" activeClassName="nav-active">Jellypic</IndexLink>
+              <IndexLink to="/">Jellypic</IndexLink>
             </div>
             <div className="header-content-icons text-right">
               <div />
