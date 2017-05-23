@@ -6,12 +6,12 @@ const CHANGE_LOGIN_STATE = 'CHANGE_LOGIN_STATE'
 // ------------------------------------
 // Actions
 // ------------------------------------
-const changeState = (state, error = null) => {
+const changeState = (state) => {
   return {
     type: CHANGE_LOGIN_STATE,
     payload: {
       state: state,
-      error: error
+      error: null
     }
   }
 }
@@ -61,6 +61,7 @@ const ensureFacebookSdkLoaded = (callback) => {
   if (window.fbAsyncInit)
     return callback()
 
+  /* global FACEBOOK_APP_ID */
   window.fbAsyncInit = () => {
     window.FB.init({
       appId      : FACEBOOK_APP_ID,
