@@ -12,7 +12,7 @@ export class SessionView extends Component {
     this.onTryAgainClick = this.onTryAgainClick.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     if (this.props.session.state !== 'authenticated')
       this.props.authenticate()
   }

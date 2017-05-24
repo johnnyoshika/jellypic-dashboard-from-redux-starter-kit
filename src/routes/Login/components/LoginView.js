@@ -12,7 +12,7 @@ export class LoginView extends Component {
     this.onClick = this.onClick.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.checkFacebook()
   }
 
