@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CardComment from './CardComment'
+import Moment from 'react-moment'
 
 export class Card extends Component {
   render () {
@@ -15,7 +16,7 @@ export class Card extends Component {
             </div>
           </div>
           <div className="card-heading-time text-right">
-            20h
+            <Moment fromNow ago unix>{this.props.post.createdAt}</Moment>
           </div>
         </div>
         <div className="card-photo">
