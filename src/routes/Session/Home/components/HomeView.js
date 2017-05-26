@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
 import Card from '../../../../components/Card'
+import ErrorMessage from '../../../../components/ErrorMessage'
 import './HomeView.scss'
 
 export class HomeView extends Component {
   componentDidMount () {
     this.props.fetchNext()
+  }
+
+  renderError () {
+    return (
+      <div className="text-center">
+        <ErrorMessage message={this.props.home.error} />
+      </div>
+    )
+  }
+
+  renderSpinner () {
+    return (
+      <div className="text-center">
+        <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw" />
+      </div>
+    )
   }
 
   render () {
@@ -15,6 +32,8 @@ export class HomeView extends Component {
           {this.props.home.postIds.map(id => (
             <Card key={id} post={this.props.posts[id]} />
           ))}
+          {this.props.home.state === 'error' && this.renderError()}
+          {this.props.home.state === 'loading' && this.renderSpinner()}
         </div>
         <div className="gutter" />
       </div>
