@@ -64,7 +64,7 @@ export const authenticate = () => {
 }
 
 // ------------------------------------
-// Action Handlers`
+// Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
   [CHANGE_SESSION_STATE]: (state, action) => Object.assign({}, state, action.payload)

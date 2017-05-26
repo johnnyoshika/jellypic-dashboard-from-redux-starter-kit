@@ -70,7 +70,7 @@ export const fetchNext = () => {
 }
 
 // ------------------------------------
-// Action Handlers`
+// Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
   [CHANGE_HOME_STATE]: (state, action) => Object.assign({}, state, action.payload),
