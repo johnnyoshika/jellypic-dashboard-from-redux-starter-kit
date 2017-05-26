@@ -1,7 +1,7 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const CHANGE_SESSION_STATE = 'CHANGE_SESSION_STATE'
+const CHANGE_SESSION_STATE = 'CHANGE_SESSION_STATE'
 
 // ------------------------------------
 // Actions

@@ -1,7 +1,7 @@
 import React from 'react'
 import './PageLayout.scss'
 
-export const PageLayout = ({ children }) => (
+const PageLayout = ({ children }) => (
   <div>
     {children}
   </div>

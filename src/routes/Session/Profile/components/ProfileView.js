@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProfileView.scss'
 
-export const ProfileView = () => (
+const ProfileView = () => (
   <div className="profile-container">
     <div className="gutter" />
     <div className="profile-main">

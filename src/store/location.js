@@ -3,7 +3,7 @@ import browserHistory from 'react-router/lib/browserHistory'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const LOCATION_CHANGE = 'LOCATION_CHANGE'
+const LOCATION_CHANGE = 'LOCATION_CHANGE'
 
 // ------------------------------------
 // Actions
