@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import locationReducer from './location'
 import loginReducer from '../routes/Login/modules/login'
 import sessionReducer from '../routes/Session/modules/session'
+import entitiesReducer from './entities'
 import homeReducer from '../routes/Session/Home/modules/home'
 
 export const makeRootReducer = (asyncReducers) => {
@@ -9,6 +10,7 @@ export const makeRootReducer = (asyncReducers) => {
     location: locationReducer,
     login: loginReducer,
     session: sessionReducer,
+    entities: entitiesReducer,
     home: homeReducer,
     ...asyncReducers
   })

@@ -12,8 +12,8 @@ export class HomeView extends Component {
       <div className="home-container">
         <div className="gutter" />
         <div className="home-main">
-          {this.props.home.posts.map(post => (
-            <Card key={post.id} post={post} />
+          {this.props.home.postIds.map(id => (
+            <Card key={id} post={this.props.posts[id]} />
           ))}
         </div>
         <div className="gutter" />

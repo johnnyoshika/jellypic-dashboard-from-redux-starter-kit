@@ -1,9 +1,10 @@
+import { storePosts } from '../../../../store/posts'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const CHANGE_HOME_STATE = 'CHANGE_HOME_STATE'
-export const CHANGE_HOME_NEXT_URL = 'CHANGE_HOME_NEXT_URL'
-export const APPEND_HOME_POSTS = 'APPEND_HOME_POSTS'
+const CHANGE_HOME_STATE = 'CHANGE_HOME_STATE'
+const APPEND_HOME_POSTS = 'APPEND_HOME_POSTS'
 
 // ------------------------------------
 // Actions
@@ -57,6 +58,7 @@ export const fetchNext = () => {
 
       response.json().then(json => {
         if (response.ok) {
+          dispatch(storePosts(json.data))
           dispatch(appendPosts(json.data))
           dispatch(changeNextUrl(json.pagination.nextUrl))
           dispatch(changeState('idle'))
@@ -74,7 +76,7 @@ export const fetchNext = () => {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [CHANGE_HOME_STATE]: (state, action) => Object.assign({}, state, action.payload),
-  [APPEND_HOME_POSTS]: (state, action) => Object.assign({}, state, { posts: [...state.posts, ...action.payload.posts] })
+  [APPEND_HOME_POSTS]: (state, action) => Object.assign({}, state, { postIds: [...state.postIds, ...action.payload.posts.map(post => post.id)] })
 }
 
 // ------------------------------------
@@ -84,7 +86,7 @@ const initialState = {
   state: 'idle', // loading,idle,error
   error: null,
   nextUrl: '/api/posts',
-  posts: []
+  postIds: []
 }
 export default function homeReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
