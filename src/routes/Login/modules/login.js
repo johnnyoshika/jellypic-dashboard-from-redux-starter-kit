@@ -26,7 +26,7 @@ const loginFailed = (message) => {
   }
 }
 
-const loginSucceeded = (json) => {
+const loginSucceeded = () => {
   return {
     type: CHANGE_LOGIN_STATE,
     payload: {
@@ -116,14 +116,13 @@ const login = (accessToken) => {
       })
     })
     .then(response => {
-      if (response.headers.get('Content-Type').split(';')[0].toLowerCase().trim() !== 'application/json')
-        throw new Error(response.statusText)
+      if (response.ok) {
+        dispatch(loginSucceeded())
+        return
+      }
 
       response.json().then(json => {
-        if (response.ok)
-          dispatch(loginSucceeded(json))
-        else
-          dispatch(loginFailed(json.message || 'Error logging in.'))
+        dispatch(loginFailed(json.message || 'Error logging in.'))
       })
     })
     .catch(error => dispatch(loginFailed(error.message)))
