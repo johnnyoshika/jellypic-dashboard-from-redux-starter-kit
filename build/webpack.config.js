@@ -44,15 +44,7 @@ const config = {
       __TEST__,
       __PROD__,
     }, project.globals))
-  ],
-  devServer: {
-    proxy: {
-      '/api/*': {
-        target: 'http://localhost:8887',
-        secure: false
-      }
-    }
-  }
+  ]
 }
 
 // JavaScript
