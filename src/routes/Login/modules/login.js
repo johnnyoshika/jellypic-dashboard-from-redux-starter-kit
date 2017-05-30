@@ -108,6 +108,7 @@ const login = (accessToken) => {
 
     return fetch('/api/sessions', {
       method: 'POST',
+      credentials: 'include',
       headers: new Headers({
         'Content-Type': 'application/json'
       }),

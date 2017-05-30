@@ -51,7 +51,9 @@ export const fetchNext = () => {
   return (dispatch, getState) => {
     dispatch(changeState('loading'))
 
-    return fetch(getState().home.nextUrl)
+    return fetch(getState().home.nextUrl, {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.headers.get('Content-Type').split(';')[0].toLowerCase().trim() !== 'application/json')
         throw new Error('Error connecting to the server. Please try again!')

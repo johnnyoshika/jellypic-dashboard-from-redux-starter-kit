@@ -45,7 +45,9 @@ export const authenticate = () => {
   return (dispatch, getState) => {
     dispatch(changeState('checking'))
 
-    return fetch('/api/sessions/me')
+    return fetch('/api/sessions/me', {
+      credentials: 'include'
+    })
     .then(response => {
       if (response.headers.get('Content-Type').split(';')[0].toLowerCase().trim() !== 'application/json')
         throw new Error('Error connecting to the server. Please try again!')
