@@ -58,7 +58,7 @@ export const authenticate = () => {
         else if (response.status === 401)
           dispatch(changeState('anonymous'))
         else
-          throw new Error('Login failed. Please try again!')
+          dispatch(authenticationFailed(json.message))
       })
     })
     .catch(error => dispatch(authenticationFailed(error.message)))

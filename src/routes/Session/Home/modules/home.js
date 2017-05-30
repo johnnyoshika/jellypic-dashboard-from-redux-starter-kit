@@ -65,7 +65,7 @@ export const fetchNext = () => {
           dispatch(changeNextUrl(json.pagination.nextUrl))
           dispatch(changeState('idle'))
         } else {
-          throw new Error('Error fetching posts!')
+          dispatch(fetchFailed(json.message))
         }
       })
     })
