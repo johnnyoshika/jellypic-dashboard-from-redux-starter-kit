@@ -21,6 +21,11 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
 * `npm run lint`
 * autofix: `npm run lint:fix`
 
+## EF Migration
+* After making changes to entities, run the following command in package manager console:
+  * `add-migration <migration name>`
+  * `update-database`
+
 ## Background
 * Started with [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit). Selected this one over the hundreds of others by following this process:
   * List starter kits here: [http://andrewhfarmer.com/starter-project/](http://andrewhfarmer.com/starter-project/)
