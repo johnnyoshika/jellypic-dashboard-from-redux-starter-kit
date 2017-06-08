@@ -16,6 +16,15 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
   * In order for Facebook Login to work, the browser must be pointing to localhost:3000 or www.jellypic.local:3000, b/c we can't seem to register 10.0.75.1 as an app domain in our Facebook app settings
 * [www.jellypic.local:3000](http://www.jellypic.local:3000)
   * www.jellypic.local:3000 is registered as a `Valid OAuth redirect URI` in Facebook App settings, so this can also be used to log in with Facebook
+* Proxy doesn't work (more info: [https://github.com/davezuko/react-redux-starter-kit/issues/1007](https://github.com/davezuko/react-redux-starter-kit/issues/1007)), so use Fiddler for proxying:
+```
+    if (oSession.uriContains("localhost:3000/api"))
+      oSession.host = "localhost:56000";
+    if (oSession.uriContains("10.0.75.1:3000/api"))
+      oSession.host = "localhost:56000";
+    if (oSession.uriContains("www.jellypic.local:3000/api"))
+      oSession.host = "localhost:56000";
+```
 
 ## Lint
 * `npm run lint`
