@@ -5,6 +5,8 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
 ## Installation
 * `git clone {repository url}`
 * `cd` into new directory
+* On Windows, use Node version 6.*
+  * I tested it successfully on Windows with Node versions 6.3.1 and 6.11.0, but it didn't work with 8.1.1
 * `npm install`
 
 ## Running / Development
