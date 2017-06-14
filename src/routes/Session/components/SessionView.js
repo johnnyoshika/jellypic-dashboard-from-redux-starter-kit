@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { IndexLink, Link, browserHistory } from 'react-router'
 import ErrorMessage from '../../../components/ErrorMessage'
+import Uploader from '../../../components/Uploader'
 import './SessionView.scss'
 
 export class SessionView extends Component {
@@ -68,10 +69,10 @@ export class SessionView extends Component {
             <div className="header-content-icons text-right">
               <div />
               <div>
-                <a href=""><i className="fa fa-camera fa-2x" aria-hidden="true" /></a>
+                <Uploader><i className="fa fa-camera fa-2x" aria-hidden="true" /></Uploader>
               </div>
               <div>
-                <a href=""><i className="fa fa-cloud-upload fa-2x" aria-hidden="true" /></a>
+                <Uploader><i className="fa fa-cloud-upload fa-2x" aria-hidden="true" /></Uploader>
               </div>
               <div>
                 <Link to="/login" activeClassName="nav-active"><i className="fa fa-heart fa-2x" aria-hidden="true" /></Link>

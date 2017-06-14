@@ -19,7 +19,9 @@ module.exports = {
   externals: {},
   /** A hash map of variables and their values to expose globally */
   globals: {
-    FACEBOOK_APP_ID: '215604332289047'
+    FACEBOOK_APP_ID: '"215604332289047"',
+    CLOUDINARY_CLOUD_NAME: '"dfk3jxiqp"',
+    CLOUDINARY_UPLOAD_PRESET: '"jellypic"'
   },
   /** Whether to enable verbose logging */
   verbose: false,
