@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { toastr } from 'react-redux-toastr'
 
 export class Uploader extends Component {
   uploadWidget() {
@@ -11,6 +12,14 @@ export class Uploader extends Component {
       multiple: false
     }, function(error, result) {
       console.log(error, result);
+
+      if (error) {
+        if (error.message !== 'User closed widget')
+          toastr.error(error.message);
+      }
+      else {
+        toastr.success('Success!', 'Image was uploaded successfully!');
+      }
     });
   }
 
