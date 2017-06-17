@@ -14,8 +14,6 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
 * Open browser at:
 * [localhost:3000](http://www.jellypic.local:3000)
   * In order for Facebook Login to work, the browser must be pointing to localhost:3000 or www.jellypic.local:3000, b/c we can't seem to register 10.0.75.1 as an app domain in our Facebook app settings
-* [10.0.75.1:3000](http://10.0.75.1:3000)
-  * In order for Hot Module Replacement (HMR) to work, you need to open the browser on the same domain as HMR's domain. On my Windows machine, this is 10.0.75.1:3000.
 * [www.jellypic.local:3000](http://www.jellypic.local:3000)
   * www.jellypic.local:3000 is registered as a `Valid OAuth redirect URI` in Facebook App settings, so this can also be used to log in with Facebook
 * Proxy doesn't work (more info: [https://github.com/davezuko/react-redux-starter-kit/issues/1007](https://github.com/davezuko/react-redux-starter-kit/issues/1007)), so use Fiddler for proxying:
@@ -26,11 +24,6 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
       oSession.host = "localhost:56000";
     if (oSession.uriContains("www.jellypic.local:3000/api"))
       oSession.host = "localhost:56000";
-```
-* Hot Module Replacement only works on the same domain unless CORS is enabled by adding `Access-Control-Allow-Origin` in the response. To do this using Fiddler, add this to `OnBeforeResponse` (note: Stream must be disabled in Fiddler for OnBeforeResponse to work):
-```
-if (oSession.uriContains("10.0.75.1:3000") && oSession.uriContains(".hot-update.json"))
-  oSession.oResponse["Access-Control-Allow-Origin"] = "*";
 ```
 
 ## Lint
