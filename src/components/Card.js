@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CardComment from './CardComment'
 import Moment from 'react-moment'
+import {Image} from 'cloudinary-react'
 
 export class Card extends Component {
   render () {
@@ -9,7 +10,7 @@ export class Card extends Component {
         <div className="card-heading">
           <div className="card-heading-user">
             <div className="card-heading-user-image">
-              <img src={this.props.post.user.profilePicture} />
+              <img src={this.props.post.user.thumbUrl} />
             </div>
             <div className="card-heading-user-name">
               <a href="">{this.props.post.user.username}</a>
@@ -20,7 +21,14 @@ export class Card extends Component {
           </div>
         </div>
         <div className="card-photo">
-          <img className="image-100" src={this.props.post.imageUrl} />
+          <Image
+            className="image-100"
+            cloudName={CLOUDINARY_CLOUD_NAME}
+            publicId={this.props.post.cloudinaryPublicId}
+            crop="fit"
+            height="600"
+            width="600"
+            secure />
         </div>
         <div className="card-info">
           <div className="card-info-likes">
