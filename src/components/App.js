@@ -20,7 +20,7 @@ class App extends React.Component {
             position="top-right"
             transitionIn="bounceIn"
             transitionOut="bounceOut"
-            progressBar={false}/>
+            progressBar={false} />
         </div>
       </Provider>
     )

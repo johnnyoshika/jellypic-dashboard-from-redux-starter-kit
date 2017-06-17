@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import CardComment from './CardComment'
 import Moment from 'react-moment'
-import {Image} from 'cloudinary-react'
+import { Image } from 'cloudinary-react'
+
+/* global CLOUDINARY_CLOUD_NAME */
 
 export class Card extends Component {
   render () {
