@@ -21,15 +21,14 @@ export class Uploader extends Component {
       tags: [ 'dashboard' ],
       theme: 'white',
       multiple: false
-    }, function (error, result) {
-      console.log(error, result)
-
-      if (error) {
-        if (error.message !== 'User closed widget')
-          toastr.error(error.message)
-      } else {
-        toastr.success('Success!', 'Image was uploaded successfully!')
+    }, (error, result) => {
+      if (!error) {
+        this.props.savePost(result.map(image => image.public_id))
+        return
       }
+
+      if (error.message !== 'User closed widget')
+        toastr.error(error.message)
     })
   }
 

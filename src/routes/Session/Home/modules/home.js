@@ -5,6 +5,7 @@ import { storePosts } from '../../../../store/posts'
 // ------------------------------------
 const CHANGE_HOME_STATE = 'CHANGE_HOME_STATE'
 const APPEND_HOME_POSTS = 'APPEND_HOME_POSTS'
+const PREPEND_HOME_POSTS = 'PREPEND_HOME_POSTS'
 
 // ------------------------------------
 // Actions
@@ -47,6 +48,15 @@ const appendPosts = (posts) => {
   }
 }
 
+export const prependPosts = (posts) => {
+  return {
+    type    : PREPEND_HOME_POSTS,
+    payload : {
+      posts
+    }
+  }
+}
+
 export const fetchNext = () => {
   return (dispatch, getState) => {
     dispatch(changeState('loading'))
@@ -78,7 +88,8 @@ export const fetchNext = () => {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [CHANGE_HOME_STATE]: (state, action) => Object.assign({}, state, action.payload),
-  [APPEND_HOME_POSTS]: (state, action) => Object.assign({}, state, { postIds: [...state.postIds, ...action.payload.posts.map(post => post.id)] })
+  [APPEND_HOME_POSTS]: (state, action) => Object.assign({}, state, { postIds: [...state.postIds, ...action.payload.posts.map(post => post.id)] }),
+  [PREPEND_HOME_POSTS]: (state, action) => Object.assign({}, state, { postIds: [...action.payload.posts.map(post => post.id), ...state.postIds] }),
 }
 
 // ------------------------------------

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { IndexLink, Link, browserHistory } from 'react-router'
 import ErrorMessage from '../../../components/ErrorMessage'
-import Uploader from '../../../components/Uploader'
+import Uploader from '../../../containers/UploaderContainer'
 import './SessionView.scss'
 
 export class SessionView extends Component {
