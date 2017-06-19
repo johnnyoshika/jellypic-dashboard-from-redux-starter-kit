@@ -84,9 +84,32 @@ export class SessionView extends Component {
           </div>
           <div className="gutter" />
         </div>
+        {this.renderUploaderState()}
         <div>
           {this.props.children}
         </div>
+      </div>
+    )
+  }
+
+  renderUploaderState () {
+    if (this.props.uploader.state === 'idle')
+      return null;
+
+    return (
+      <div className="uploader-state">
+        <div className="gutter" />
+        <div className="uploader-state-content">
+          {
+            this.props.uploader.state === 'error' &&
+              <div className="error">Error: {this.props.uploader.error}</div>
+          }
+          {
+            this.props.uploader.state === 'saving' &&
+              <div className="progress">Finishing up...</div>
+          }
+        </div>
+        <div className="gutter" />
       </div>
     )
   }

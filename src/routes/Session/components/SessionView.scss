@@ -22,6 +22,18 @@
   color: #555;
 }
 
+.uploader-state {
+  display:grid;
+  grid-template-columns: auto 602px auto;
+  margin-top: 60px;
+}
+.uploader-state-content {
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 12px 24px;
+  background: white;
+}
+
 @media (max-width: 980px) {
   .header {
     grid-template-columns: 18px auto 18px;
@@ -38,6 +50,9 @@
 @media (max-width: 619px) {
   .header-content-icons {
     grid-template-columns: auto 46px 56px 52px 46px;
+  }
+  .uploader-state {
+    grid-template-columns: 0 auto 0;
   }
 }
 
