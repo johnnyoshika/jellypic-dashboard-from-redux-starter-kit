@@ -2,7 +2,7 @@
 
 Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps.
 
-## Installation
+## Setup
 * `git clone {repository url}`
 * `cd` into new directory
 * On Windows, use Node version 6.*
@@ -30,11 +30,6 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
 * `npm run lint`
 * autofix: `npm run lint:fix`
 
-## EF Migration
-* After making changes to entities, run the following command in package manager console:
-  * `add-migration <migration name>`
-  * `update-database`
-
 ## Background
 * Started with [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit). Selected this one over the hundreds of others by following this process:
   * List starter kits here: [http://andrewhfarmer.com/starter-project/](http://andrewhfarmer.com/starter-project/)
@@ -42,4 +37,3 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
   * I tried the most popular [react-boilerplate/react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), but there was so much going on, especially with the server-side rendering. I wanted something simpler and client-side rendering only.
   * I didn't try the 2nd most popular [erikras/react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example) because it supports universal rendering, and I wanted a simpler one with only client-side rendering.
   * [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit) is the 3rd on the list and conincidentally already have experience with it (as Olio's widget was inspired by this starter kit).
-* Cloned with git clone --depth=1 https://github.com/davezuko/react-redux-starter-kit.git
