@@ -91,8 +91,8 @@ const fetchNext = () => {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [CHANGE_HOME_STATE]: (state, action) => Object.assign({}, state, action.payload),
-  [APPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { postIds: [...state.postIds, ...action.payload.ids] }),
-  [PREPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { postIds: [...action.payload.ids, ...state.postIds] }),
+  [APPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { posts: [...state.posts, ...action.payload.ids] }),
+  [PREPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { posts: [...action.payload.ids, ...state.posts] }),
 }
 
 // ------------------------------------
@@ -102,7 +102,7 @@ const initialState = {
   state: 'idle', // loading,idle,error
   error: null,
   nextUrl: '/api/posts',
-  postIds: []
+  posts: []
 }
 function homeReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]

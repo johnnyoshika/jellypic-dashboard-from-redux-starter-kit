@@ -30,7 +30,7 @@ class HomeView extends Component {
       <div className="home-container">
         <div className="gutter" />
         <div className="home-main">
-          {this.props.home.postIds.map(id => (
+          {this.props.home.posts.map(id => (
             <Card key={id} post={selectPost(this.props.entities, id)} />
           ))}
           {this.props.home.state === 'error' && this.renderError()}
