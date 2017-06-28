@@ -39,7 +39,7 @@ const saveSucceeded = () => {
   }
 }
 
-export const savePost = (cloudinaryPublicIds) => {
+const savePost = (cloudinaryPublicIds) => {
   return (dispatch, getState) => {
     dispatch(changeState('saving'))
 
@@ -86,8 +86,10 @@ const initialState = {
   state: 'idle', // idle,saving,error
   error: null
 }
-export default function uploadReducer (state = initialState, action) {
+function uploadReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
 }
+
+export { uploadReducer as default, savePost }

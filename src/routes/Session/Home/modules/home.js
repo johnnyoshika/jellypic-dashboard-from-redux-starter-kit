@@ -48,7 +48,7 @@ const appendPosts = (posts) => {
   }
 }
 
-export const prependPosts = (posts) => {
+const prependPosts = (posts) => {
   return {
     type    : PREPEND_HOME_POSTS,
     payload : {
@@ -57,7 +57,7 @@ export const prependPosts = (posts) => {
   }
 }
 
-export const fetchNext = () => {
+const fetchNext = () => {
   return (dispatch, getState) => {
     dispatch(changeState('loading'))
 
@@ -101,8 +101,10 @@ const initialState = {
   nextUrl: '/api/posts',
   postIds: []
 }
-export default function homeReducer (state = initialState, action) {
+function homeReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
 }
+
+export { homeReducer as default, prependPosts, fetchNext }

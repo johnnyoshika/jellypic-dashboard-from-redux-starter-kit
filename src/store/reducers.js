@@ -7,7 +7,7 @@ import entitiesReducer from './entities'
 import homeReducer from '../routes/Session/Home/modules/home'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 
-export const makeRootReducer = (asyncReducers) => {
+const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     location: locationReducer,
     uploader: uploaderReducer,
@@ -20,11 +20,11 @@ export const makeRootReducer = (asyncReducers) => {
   })
 }
 
-export const injectReducer = (store, { key, reducer }) => {
+const injectReducer = (store, { key, reducer }) => {
   if (Object.hasOwnProperty.call(store.asyncReducers, key)) return
 
   store.asyncReducers[key] = reducer
   store.replaceReducer(makeRootReducer(store.asyncReducers))
 }
 
-export default makeRootReducer
+export { makeRootReducer as default, makeRootReducer, injectReducer }

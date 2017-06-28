@@ -36,7 +36,7 @@ const loginSucceeded = () => {
   }
 }
 
-export const checkFacebook = () => {
+const checkFacebook = () => {
   return (dispatch, getState) => {
     dispatch(changeState('processing'))
 
@@ -48,7 +48,7 @@ export const checkFacebook = () => {
   }
 }
 
-export const loginWithFacebook = () => {
+const loginWithFacebook = () => {
   return (dispatch, getState) => {
     dispatch(changeState('processing'))
     window.FB.login((response) => {
@@ -144,8 +144,10 @@ const initialState = {
   state: 'idle', // idle,processing,ready,success,error
   error: null
 }
-export default function loginReducer (state = initialState, action) {
+function loginReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
 }
+
+export { loginReducer as default, checkFacebook, loginWithFacebook }

@@ -6,7 +6,7 @@ const STORE_POSTS = 'STORE_POSTS'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const storePosts = (posts) => {
+const storePosts = (posts) => {
   return {
     type    : STORE_POSTS,
     payload : {
@@ -32,8 +32,10 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = {}
-export default function postsReducer (state = initialState, action) {
+function postsReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
 }
+
+export { postsReducer as default, storePosts }

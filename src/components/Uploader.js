@@ -4,7 +4,7 @@ import { toastr } from 'react-redux-toastr'
 /* global CLOUDINARY_CLOUD_NAME */
 /* global CLOUDINARY_UPLOAD_PRESET */
 
-export class Uploader extends Component {
+class Uploader extends Component {
   constructor () {
     super()
 

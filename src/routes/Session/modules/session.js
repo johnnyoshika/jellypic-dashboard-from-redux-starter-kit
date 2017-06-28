@@ -41,7 +41,7 @@ const authenticationFailed = (message) => {
   }
 }
 
-export const authenticate = () => {
+const authenticate = () => {
   return (dispatch, getState) => {
     dispatch(changeState('checking'))
 
@@ -81,8 +81,10 @@ const initialState = {
   userId: null,
   username: null
 }
-export default function sessionReducer (state = initialState, action) {
+function sessionReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
 }
+
+export { sessionReducer as default, authenticate }

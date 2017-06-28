@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import ErrorMessage from '../../../components/ErrorMessage'
 import './LoginView.scss'
 
-export class LoginView extends Component {
+class LoginView extends Component {
   componentDidMount () {
     this.props.checkFacebook()
   }

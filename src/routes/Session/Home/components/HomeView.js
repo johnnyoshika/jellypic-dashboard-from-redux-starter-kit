@@ -3,7 +3,7 @@ import Card from '../../../../components/Card'
 import ErrorMessage from '../../../../components/ErrorMessage'
 import './HomeView.scss'
 
-export class HomeView extends Component {
+class HomeView extends Component {
   componentDidMount () {
     this.props.fetchNext()
   }

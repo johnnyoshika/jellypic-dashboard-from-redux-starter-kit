@@ -4,7 +4,7 @@ import ErrorMessage from '../../../components/ErrorMessage'
 import Uploader from '../../../containers/UploaderContainer'
 import './SessionView.scss'
 
-export class SessionView extends Component {
+class SessionView extends Component {
   constructor () {
     super()
 
@@ -94,7 +94,7 @@ export class SessionView extends Component {
 
   renderUploaderState () {
     if (this.props.uploader.state === 'idle')
-      return null;
+      return null
 
     return (
       <div className="uploader-state">

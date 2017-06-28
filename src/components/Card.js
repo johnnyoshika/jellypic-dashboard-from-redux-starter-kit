@@ -5,7 +5,7 @@ import { Image } from 'cloudinary-react'
 
 /* global CLOUDINARY_CLOUD_NAME */
 
-export class Card extends Component {
+class Card extends Component {
   render () {
     return (
       <div className="card">
