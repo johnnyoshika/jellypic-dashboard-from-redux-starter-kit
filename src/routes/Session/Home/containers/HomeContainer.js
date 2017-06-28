@@ -8,7 +8,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   home : state.home,
-  posts: state.entities.posts
+  entities: state.entities
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Card from '../../../../components/Card'
 import ErrorMessage from '../../../../components/ErrorMessage'
+import { selectPost } from '../../../../modules/posts'
 import './HomeView.scss'
 
 class HomeView extends Component {
@@ -30,7 +31,7 @@ class HomeView extends Component {
         <div className="gutter" />
         <div className="home-main">
           {this.props.home.postIds.map(id => (
-            <Card key={id} post={this.props.posts[id]} />
+            <Card key={id} post={selectPost(this.props.entities, id)} />
           ))}
           {this.props.home.state === 'error' && this.renderError()}
           {this.props.home.state === 'loading' && this.renderSpinner()}

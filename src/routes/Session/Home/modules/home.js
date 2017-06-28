@@ -1,11 +1,13 @@
-import { storePosts } from '../../../../store/posts'
+import { normalize } from 'normalizr'
+import { post as postSchema } from '../../../../store/schema'
+import { addEntities } from '../../../../modules/entities'
 
 // ------------------------------------
 // Constants
 // ------------------------------------
 const CHANGE_HOME_STATE = 'CHANGE_HOME_STATE'
-const APPEND_HOME_POSTS = 'APPEND_HOME_POSTS'
-const PREPEND_HOME_POSTS = 'PREPEND_HOME_POSTS'
+const APPEND_HOME_POSTS_IDS = 'APPEND_HOME_POSTS_IDS'
+const PREPEND_HOME_POSTS_IDS = 'PREPEND_HOME_POSTS_IDS'
 
 // ------------------------------------
 // Actions
@@ -39,20 +41,20 @@ const changeNextUrl = (nextUrl) => {
   }
 }
 
-const appendPosts = (posts) => {
+const appendPostIds = (ids) => {
   return {
-    type    : APPEND_HOME_POSTS,
+    type    : APPEND_HOME_POSTS_IDS,
     payload : {
-      posts
+      ids
     }
   }
 }
 
-const prependPosts = (posts) => {
+const prependPostIds = (ids) => {
   return {
-    type    : PREPEND_HOME_POSTS,
+    type    : PREPEND_HOME_POSTS_IDS,
     payload : {
-      posts
+      ids
     }
   }
 }
@@ -70,8 +72,9 @@ const fetchNext = () => {
 
       response.json().then(json => {
         if (response.ok) {
-          dispatch(storePosts(json.data))
-          dispatch(appendPosts(json.data))
+          const data = normalize(json.data, [ postSchema ])
+          dispatch(addEntities(data.entities))
+          dispatch(appendPostIds(data.result))
           dispatch(changeNextUrl(json.pagination.nextUrl))
           dispatch(changeState('idle'))
         } else {
@@ -88,8 +91,8 @@ const fetchNext = () => {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [CHANGE_HOME_STATE]: (state, action) => Object.assign({}, state, action.payload),
-  [APPEND_HOME_POSTS]: (state, action) => Object.assign({}, state, { postIds: [...state.postIds, ...action.payload.posts.map(post => post.id)] }),
-  [PREPEND_HOME_POSTS]: (state, action) => Object.assign({}, state, { postIds: [...action.payload.posts.map(post => post.id), ...state.postIds] }),
+  [APPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { postIds: [...state.postIds, ...action.payload.ids] }),
+  [PREPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { postIds: [...action.payload.ids, ...state.postIds] }),
 }
 
 // ------------------------------------
@@ -107,4 +110,4 @@ function homeReducer (state = initialState, action) {
   return handler ? handler(state, action) : state
 }
 
-export { homeReducer as default, prependPosts, fetchNext }
+export { homeReducer as default, prependPostIds, fetchNext }

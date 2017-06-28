@@ -1,5 +1,7 @@
-import { storePosts } from '../store/posts'
-import { prependPosts } from '../routes/Session/Home/modules/home' // feels ugly reaching in like this
+import { normalize } from 'normalizr'
+import { post as postSchema } from '../store/schema'
+import { addEntities } from '../modules/entities'
+import { prependPostIds } from '../routes/Session/Home/modules/home' // feels ugly reaching in like this
 
 // ------------------------------------
 // Constants
@@ -63,9 +65,10 @@ const savePost = (cloudinaryPublicIds) => {
           return
         }
 
+        const data = normalize(json.data, [ postSchema ])
         dispatch(saveSucceeded())
-        dispatch(storePosts(json.data))
-        dispatch(prependPosts(json.data))
+        dispatch(addEntities(data.entities))
+        dispatch(prependPostIds(data.result))
       })
     })
     .catch(error => dispatch(saveFailed(error.message)))

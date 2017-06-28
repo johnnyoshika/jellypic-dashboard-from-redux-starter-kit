@@ -34,10 +34,10 @@ class Card extends Component {
         </div>
         <div className="card-info">
           <div className="card-info-likes">
-            {this.props.post.likes.count} likes
+            {this.props.post.likes.length} likes
           </div>
           <div className="card-info-comments">
-            {this.props.post.comments.data.map(comment => (
+            {this.props.post.comments.map(comment => (
               <CardComment key={comment.id} comment={comment} />
             ))}
           </div>

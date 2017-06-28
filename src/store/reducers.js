@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import locationReducer from './location'
 import uploaderReducer from '../modules/uploader'
+import entitiesReducer from '../modules/entitiesReducer'
 import loginReducer from '../routes/Login/modules/login'
 import sessionReducer from '../routes/Session/modules/session'
-import entitiesReducer from './entities'
 import homeReducer from '../routes/Session/Home/modules/home'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 
