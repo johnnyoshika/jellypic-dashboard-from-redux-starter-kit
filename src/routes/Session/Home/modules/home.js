@@ -90,9 +90,9 @@ const fetchNext = () => {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [CHANGE_HOME_STATE]: (state, action) => Object.assign({}, state, action.payload),
-  [APPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { posts: [...state.posts, ...action.payload.ids] }),
-  [PREPEND_HOME_POSTS_IDS]: (state, action) => Object.assign({}, state, { posts: [...action.payload.ids, ...state.posts] }),
+  [CHANGE_HOME_STATE]: (state, action) => ({ ...state, ...action.payload }),
+  [APPEND_HOME_POSTS_IDS]: (state, action) => ({ ...state, ...{ posts: [...state.posts, ...action.payload.ids] } }),
+  [PREPEND_HOME_POSTS_IDS]: (state, action) => ({ ...state, ...{ posts: [...action.payload.ids, ...state.posts] } }),
 }
 
 // ------------------------------------

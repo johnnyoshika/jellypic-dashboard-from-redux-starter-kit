@@ -58,7 +58,7 @@ const authenticate = () => {
           const data = normalize(json, userSchema)
           dispatch(addEntities(data.entities))
           dispatch(setSession(data.result))
-          return;
+          return
         }
 
         if (response.status === 401)
@@ -75,7 +75,7 @@ const authenticate = () => {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [CHANGE_SESSION_STATE]: (state, action) => Object.assign({}, state, action.payload)
+  [CHANGE_SESSION_STATE]: (state, action) => ({ ...state, ...action.payload })
 }
 
 // ------------------------------------

@@ -79,7 +79,7 @@ const savePost = (cloudinaryPublicIds) => {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [UPLOADER_STATE]: (state, action) => Object.assign({}, state, action.payload)
+  [UPLOADER_STATE]: (state, action) => ({ ...state, ...action.payload })
 }
 
 // ------------------------------------

@@ -134,7 +134,7 @@ const login = (accessToken) => {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [CHANGE_LOGIN_STATE]: (state, action) => Object.assign({}, state, action.payload)
+  [CHANGE_LOGIN_STATE]: (state, action) => ({ ...state, ...action.payload })
 }
 
 // ------------------------------------
