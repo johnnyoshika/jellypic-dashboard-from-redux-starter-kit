@@ -1,3 +1,7 @@
+import { normalize } from 'normalizr'
+import { user as userSchema } from '../../../store/schema'
+import { addEntities } from '../../../modules/entities'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -12,19 +16,17 @@ const changeState = (state) => {
     payload : {
       state,
       error: null,
-      userId: null,
-      username: null
+      user: null
     }
   }
 }
 
-const setSession = (json) => {
+const setSession = (userId) => {
   return {
     type: CHANGE_SESSION_STATE,
     payload: {
       state: 'authenticated',
-      userId: json.userId,
-      username: json.username
+      user: userId
     }
   }
 }
@@ -35,8 +37,7 @@ const authenticationFailed = (message) => {
     payload: {
       state: 'error',
       error: message,
-      userId: null,
-      username: null
+      user: null
     }
   }
 }
@@ -53,9 +54,14 @@ const authenticate = () => {
         throw new Error('Error connecting to the server. Please try again!')
 
       response.json().then(json => {
-        if (response.ok)
-          dispatch(setSession(json))
-        else if (response.status === 401)
+        if (response.ok) {
+          const data = normalize(json, userSchema)
+          dispatch(addEntities(data.entities))
+          dispatch(setSession(data.result))
+          return;
+        }
+
+        if (response.status === 401)
           dispatch(changeState('anonymous'))
         else
           dispatch(authenticationFailed(json.message))
@@ -78,8 +84,7 @@ const ACTION_HANDLERS = {
 const initialState = {
   state: 'anonymous', // checking,anonymous,authenticated,error
   error: null,
-  userId: null,
-  username: null
+  user: null
 }
 function sessionReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
