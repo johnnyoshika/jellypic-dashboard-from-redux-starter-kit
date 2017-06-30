@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import locationReducer from './location'
 import uploaderReducer from '../modules/uploader'
 import likeStateReducer from '../modules/likeState'
+import commentStateReducer from '../modules/commentState'
 import entitiesReducer from '../modules/entitiesReducer'
 import loginReducer from '../routes/Login/modules/login'
 import sessionReducer from '../routes/Session/modules/session'
@@ -13,6 +14,7 @@ const makeRootReducer = (asyncReducers) => {
     location: locationReducer,
     uploader: uploaderReducer,
     likeState: likeStateReducer,
+    commentState: commentStateReducer,
     login: loginReducer,
     session: sessionReducer,
     entities: entitiesReducer,
