@@ -52,7 +52,7 @@ const addComment = (postId, text) => save(postId, `/api/posts/${postId}/comments
 })
 
 const deleteComment = (postId, commentId) => save(postId, `/api/posts/${postId}/comments/${commentId}`, {
-  method: method,
+  method: 'DELETE',
   credentials: 'include'
 })
 
