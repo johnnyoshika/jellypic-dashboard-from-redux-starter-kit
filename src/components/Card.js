@@ -2,10 +2,53 @@ import React, { Component } from 'react'
 import CardComment from './CardComment'
 import Moment from 'react-moment'
 import { Image } from 'cloudinary-react'
+import { toastr } from 'react-redux-toastr'
 
 /* global CLOUDINARY_CLOUD_NAME */
 
 class Card extends Component {
+  constructor () {
+    super()
+
+    // REACT ES6 classes don't autobind, so bind it in the constructor
+    // as suggested here: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md#es6-classes
+    this.toggleLike = this.toggleLike.bind(this)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.checkLikeError(nextProps);
+  }
+
+  checkLikeError () {
+    if (this.likeState(nextProps.likeState).state === 'error')
+      if (this.likeState().error != this.likeState(nextProps.likeState).error)
+        toastr.error(this.likeState(nextProps.likeState).error)
+  }
+
+  toggleLike () {
+    if (this.likeIsDirty())
+      return;
+
+    if (this.liked())
+      this.props.unlike(this.props.post.id)
+    else
+      this.props.like(this.props.post.id)
+  }
+
+  liked () {
+    return this.props.post.likes.some(like =>
+      like.user.id === this.props.session.user);
+  }
+
+  likeIsDirty () {
+    return this.likeState().state === 'saving'
+  }
+
+  likeState (state) {
+    state = state || this.props.likeState;
+    return state[this.props.post.id] || {}
+  }
+
   render () {
     return (
       <div className="card">
@@ -43,7 +86,7 @@ class Card extends Component {
           </div>
           <div className="card-info-add-comment">
             <div>
-              <a href=""><i className="fa fa-heart fa-2x" aria-hidden="true" /></a>
+              <a onClick={this.toggleLike}><i className={"fa fa-heart fa-2x" + (this.liked() ? " red-icon" : "")  + (this.likeIsDirty() ? " barely-visible" : "")} aria-hidden="true" /></a>
             </div>
             <div>
               <input className="card-info-add-comment-input" type="text" placeholder="Add a comment..." />

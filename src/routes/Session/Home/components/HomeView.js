@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from '../../../../components/Card'
+import Card from '../../../../containers/CardContainer'
 import ErrorMessage from '../../../../components/ErrorMessage'
 import { selectPost } from '../../../../modules/posts'
 import './HomeView.scss'
