@@ -3,6 +3,7 @@ import CardComment from '../containers/CardCommentContainer'
 import Moment from 'react-moment'
 import { Image } from 'cloudinary-react'
 import { toastr } from 'react-redux-toastr'
+import './Card.scss'
 
 /* global CLOUDINARY_CLOUD_NAME */
 
