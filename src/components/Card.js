@@ -3,6 +3,7 @@ import CardComment from '../containers/CardCommentContainer'
 import Moment from 'react-moment'
 import { Image } from 'cloudinary-react'
 import { toastr } from 'react-redux-toastr'
+import { Link } from 'react-router'
 import './Card.scss'
 
 /* global CLOUDINARY_CLOUD_NAME */
@@ -104,7 +105,7 @@ class Card extends Component {
             </div>
           </div>
           <div className="card-heading-time text-right">
-            <Moment fromNow ago unix>{this.props.post.createdAt}</Moment>
+            <Link to={'/posts/' + this.props.post.id}><Moment fromNow ago unix>{this.props.post.createdAt}</Moment></Link>
           </div>
         </div>
         <div className="card-photo">

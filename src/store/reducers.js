@@ -7,6 +7,7 @@ import entitiesReducer from '../modules/entitiesReducer'
 import loginReducer from '../routes/Login/modules/login'
 import sessionReducer from '../routes/Session/modules/session'
 import homeReducer from '../routes/Session/Home/modules/home'
+import postReducer from '../routes/Session/Post/modules/post'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 
 const makeRootReducer = (asyncReducers) => {
@@ -19,6 +20,7 @@ const makeRootReducer = (asyncReducers) => {
     session: sessionReducer,
     entities: entitiesReducer,
     home: homeReducer,
+    post: postReducer,
     toastr: toastrReducer,
     ...asyncReducers
   })
