@@ -1,20 +1,41 @@
-const version = 1;
+const version = 'v2';
 
 self.addEventListener('install', function(event) {
-  console.log('SW v%s Installed at', version, new Date().toLocaleTimeString());
-  self.skipWaiting();
+  console.log('SW version %s Installed at', version, new Date().toLocaleTimeString());
+  event.waitUntil(
+    caches.open(version)
+    .then(function(cache) {
+      return cache.addAll([
+        '/offline/',
+        '/offline/dinosaur.gif'
+      ]);
+    }));
 });
 
 self.addEventListener('activate', function(event) {
-  console.log('SW v%s Activated at', version, new Date().toLocaleTimeString());
+  console.log('SW version %s Activated at', version, new Date().toLocaleTimeString());
+  event.waitUntil(
+    caches.keys()
+    .then(function(keys) {
+      return Promise.all(keys.filter(function(key){
+        return key !== version;
+      }).map(function(key){
+        return caches.delete(key);
+      }));
+    }));
 });
 
 self.addEventListener('fetch', function(event) {
-  // reliable to check not onLine, but b/c of LiFi, can't rely on is onLine.
-  if (!navigator.onLine) {
-    event.respondWith(new Response('<h1> Offline: ( </h1>', { headers: { 'Content-Type': 'text/html' } }));
-  } else {
-    console.log(event.request.url);
-    event.respondWith(fetch(event.request));
-  }
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        if (response)
+          return response;
+
+        // reliable to check not onLine, but b/c of LiFi, can't rely on is onLine.
+        if (!navigator.onLine)
+          return caches.match(new Request('/offline/'));
+
+        return fetch(event.request);
+      }));
 });
