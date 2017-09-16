@@ -71,7 +71,7 @@ const save = (postId, method) => {
   }
 }
 
-const makePayload = (postId, data) =>{
+const makePayload = (postId, data) => {
   const payload = {}
   payload[postId] = data
   return payload

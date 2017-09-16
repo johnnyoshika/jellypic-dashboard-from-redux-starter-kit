@@ -31,13 +31,13 @@ class Card extends Component {
 
   checkLikState (nextProps) {
     if (this.likeState(nextProps.likeState).state === 'error')
-      if (this.likeState().error != this.likeState(nextProps.likeState).error)
+      if (this.likeState().error !== this.likeState(nextProps.likeState).error)
         toastr.error(this.likeState(nextProps.likeState).error)
   }
 
   toggleLike () {
     if (this.likeIsDirty())
-      return;
+      return
 
     if (this.liked())
       this.props.unlike(this.props.post.id)
@@ -47,7 +47,7 @@ class Card extends Component {
 
   liked () {
     return this.props.post.likes.some(like =>
-      like.user.id === this.props.session.user);
+      like.user.id === this.props.session.user)
   }
 
   likeIsDirty () {
@@ -55,18 +55,18 @@ class Card extends Component {
   }
 
   likeState (state) {
-    state = state || this.props.likeState;
+    state = state || this.props.likeState
     return state[this.props.post.id] || {}
   }
 
   checkCommentState (nextProps) {
     if (this.commentState(nextProps.commentState).state === 'error')
-      if (this.commentState().error != this.commentState(nextProps.commentState).error)
+      if (this.commentState().error !== this.commentState(nextProps.commentState).error)
         toastr.error(this.commentState(nextProps.commentState).error)
 
     if (this.commentState().state === 'saving')
       if (this.commentState(nextProps.commentState).state !== 'error')
-        this.setState({comment: ''})
+        this.setState({ comment: '' })
   }
 
   onKeyPress (target) {
@@ -75,16 +75,16 @@ class Card extends Component {
   }
 
   onCommentChange (event) {
-    this.setState({comment: event.target.value})
+    this.setState({ comment: event.target.value })
   }
 
   addComment () {
-    this.setState({commentDisabled: true})
+    this.setState({ commentDisabled: true })
     this.props.addComment(this.props.post.id, this.state.comment)
   }
 
   commentState (state) {
-    state = state || this.props.commentState;
+    state = state || this.props.commentState
     return state[this.props.post.id] || {}
   }
 
@@ -129,7 +129,7 @@ class Card extends Component {
           </div>
           <div className="card-info-add-comment">
             <div>
-              <a onClick={this.toggleLike}><i className={"fa fa-heart fa-2x" + (this.liked() ? " red-icon" : "")  + (this.likeIsDirty() ? " barely-visible" : "")} aria-hidden="true" /></a>
+              <a onClick={this.toggleLike}><i className={'fa fa-heart fa-2x' + (this.liked() ? ' red-icon' : '') + (this.likeIsDirty() ? ' barely-visible' : '')} aria-hidden="true" /></a>
             </div>
             <div>
               <input className="card-info-add-comment-input" type="text" value={this.state.comment} onChange={this.onCommentChange} onKeyPress={this.onKeyPress} disabled={this.commentDisabled()} placeholder="Add a comment..." />

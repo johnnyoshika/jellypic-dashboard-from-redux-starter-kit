@@ -80,7 +80,7 @@ const save = (postId, url, request) => {
   }
 }
 
-const makePayload = (postId, data) =>{
+const makePayload = (postId, data) => {
   const payload = {}
   payload[postId] = data
   return payload

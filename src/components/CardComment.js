@@ -25,7 +25,7 @@ class CardComment extends Component {
         </div>
         {this.props.session.user === this.props.comment.user.id &&
           <div className="pull-right">
-            <a onClick={this.onDeleteClick}><i className="fa fa-times-circle" aria-hidden="true"></i></a>
+            <a onClick={this.onDeleteClick}><i className="fa fa-times-circle" aria-hidden="true" /></a>
           </div>
         }
         {this.props.comment.text}

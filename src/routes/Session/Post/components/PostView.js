@@ -45,7 +45,7 @@ class PostView extends Component {
               case 'success':
                 return this.renderPost()
               default :
-                null
+                return null
             }
           })()}
         </div>
