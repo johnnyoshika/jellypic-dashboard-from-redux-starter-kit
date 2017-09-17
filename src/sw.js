@@ -1,4 +1,4 @@
-const version = 'v6'
+const version = 'v7'
 
 self.addEventListener('install', function (event) {
   console.log('SW version %s Installed at', version, new Date().toLocaleTimeString())
@@ -6,6 +6,7 @@ self.addEventListener('install', function (event) {
     caches.open(version)
     .then(function (cache) {
       return cache.addAll([
+        ...global.serviceWorkerOption, // global.serviceWorkerOption comes from serviceworker-webpack-plugin: https://github.com/oliviertassinari/serviceworker-webpack-plugin#3-write-your-own-swjs
         '/offline/',
         '/offline/dinosaur.gif'
       ])
