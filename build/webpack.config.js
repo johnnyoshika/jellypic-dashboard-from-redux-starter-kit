@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
 const project = require('../project.config')
 
 const inProject = path.resolve.bind(path, project.basePath)
@@ -43,7 +44,10 @@ const config = {
       __DEV__,
       __TEST__,
       __PROD__,
-    }, project.globals))
+    }, project.globals)),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, '../src/sw.js'),
+    })
   ]
 }
 
