@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const project = require('../project.config')
 
 const inProject = path.resolve.bind(path, project.basePath)
@@ -43,7 +44,12 @@ const config = {
       __DEV__,
       __TEST__,
       __PROD__,
-    }, project.globals))
+    }, project.globals)),
+    new WorkboxPlugin({
+      globDirectory: __dirname,
+      globPatterns: ['**/*.{html,js,css}'],
+      swDest: path.join(__dirname, '../src/sw.js'),
+    })
   ]
 }
 
