@@ -56,13 +56,4 @@ if (__DEV__) {
 
 // Let's Go!
 // ------------------------------------
-if (!__TEST__) {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/sw.js')
-      .then(r => console.log('Service Worker registered.'))
-      .catch(error => console.error('Error registering service worker: ', error))
-  }
-
-  render()
-}
+if (!__TEST__) render()
