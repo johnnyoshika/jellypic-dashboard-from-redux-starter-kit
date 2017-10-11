@@ -50,7 +50,10 @@ const config = {
       globPatterns: ['**/*.{html,js,css}'],
       swDest: path.join(__dirname, '../src/sw.js'),
     })
-  ]
+  ],
+  node: {
+    fs: 'empty'
+  }
 }
 
 // JavaScript
