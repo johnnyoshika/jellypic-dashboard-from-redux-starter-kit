@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "compile": "node build/scripts/compile",
-    "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
+    "build": "npm run clean && cross-env NODE_ENV=production npm run compile && workbox-cli generate:sw",
     "start": "cross-env NODE_ENV=development node build/scripts/start",
     "test": "cross-env NODE_ENV=test karma start build/karma.config",
     "test:watch": "npm test -- --watch",
@@ -95,6 +95,7 @@
     "webpack": "^2.5.1",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2",
+    "workbox-cli": "^2.1.0",
     "yargs": "^8.0.1"
   }
 }
