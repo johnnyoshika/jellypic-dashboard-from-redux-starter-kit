@@ -26,6 +26,13 @@ Jellypic is a sample app to demonstrate the capabilities of Progressive Web Apps
       oSession.host = "localhost:56000";
 ```
 
+## Remote Debugging with Android Device
+* Follow instructions here to connect my Samsung S7 with my desktop's Chrome Dev Tools: https://developers.google.com/web/tools/chrome-devtools/remote-debugging/
+* I had trouble getting Chrome's Dev Tools to recognize my device. I installed and uninstalled Samsung's USB Driver for Windows from here: http://developer.samsung.com/galaxy/others/android-usb-driver-for-windows and then it started working. I'm not sure if that was coincidental or not. I documented this in the comments here: https://stackoverflow.com/a/45560715/188740
+* In the `Remote devices` tab of Chrome Dev Tools, add this port forwarding rule:
+  * `8080` --> `localhost:3000`
+  * This will allow our Samsung S7 device to run our page with url `http://localhost:3000`
+
 ## Lint
 * `npm run lint`
 * autofix: `npm run lint:fix`
