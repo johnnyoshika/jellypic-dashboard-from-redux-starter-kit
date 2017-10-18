@@ -1,5 +1,6 @@
 {
-    "name": "Jellypic",
+    "name": "Jellypic Photo Sharing",
+    "short_name": "Jellypic",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
