@@ -7,6 +7,8 @@ self.addEventListener('install', function (event) {
     .then(function (cache) {
       return cache.addAll([
         ...global.serviceWorkerOption, // global.serviceWorkerOption comes from serviceworker-webpack-plugin: https://github.com/oliviertassinari/serviceworker-webpack-plugin#3-write-your-own-swjs
+        '/favicon.ico',
+        '/humans.txt',
         '/offline/',
         '/offline/dinosaur.gif'
       ])
