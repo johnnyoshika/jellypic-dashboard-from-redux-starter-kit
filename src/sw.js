@@ -52,7 +52,8 @@ var fetchAndUpdate = function (request) {
       if (!response)
         return
 
-      if (!response.ok) {
+      // check opaque for cross-domain fetch (e.g. cloudinary images, google fonts): https://github.com/whatwg/fetch/issues/299
+      if (!response.ok && response.type !== 'opaque') {
         console.log('not ok, not caching', request.url, response.status)
         return response
       }
