@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
+import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import './styles/main.scss'
 
 // Store Initialization
@@ -56,4 +57,9 @@ if (__DEV__) {
 
 // Let's Go!
 // ------------------------------------
-if (!__TEST__) render()
+if (!__TEST__) {
+  if ('serviceWorker' in navigator)
+    runtime.register()
+
+  render()
+}
