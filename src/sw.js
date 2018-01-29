@@ -58,6 +58,11 @@ var fetchAndUpdate = function (request) {
         return response
       }
 
+      if (request.method !== 'GET') {
+        console.log('not GET method, not caching', request.url, response.status)
+        return response
+      }
+
       console.log('ok, caching', request.url, response.status)
       return caches.open(version)
         .then(function (cache) {
