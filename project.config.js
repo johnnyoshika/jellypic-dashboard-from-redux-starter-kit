@@ -21,7 +21,8 @@ module.exports = {
   globals: {
     FACEBOOK_APP_ID: '"215604332289047"',
     CLOUDINARY_CLOUD_NAME: '"dfk3jxiqp"',
-    CLOUDINARY_UPLOAD_PRESET: '"jellypic"'
+    CLOUDINARY_UPLOAD_PRESET: '"jellypic"',
+    WEB_PUSH_VAPID_PUBLIC_KEY: '"BPDnKM0PbT9PI0kqnpGA-Xsgls4Lg39blrufpW408iubor_snW9nPX8eoCUJ7cP_M0Ex1lROBzrIPCRtQWvmlFs"'
   },
   /** Whether to enable verbose logging */
   verbose: false,

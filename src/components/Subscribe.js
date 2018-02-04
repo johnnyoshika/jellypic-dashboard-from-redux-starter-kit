@@ -23,9 +23,7 @@ class Subscribe extends Component {
   }
 
   subscribe () {
-    Notification.requestPermission(permission => {
-      this.reset();
-    });
+    this.props.toggle()
   }
 
   render () {
