@@ -47,7 +47,7 @@ const toggle = () => {
       sw.pushManager.getSubscription()
         .then(s => {
           if (s === null)
-            subscribe(dispatch)
+            subscribe(dispatch, sw)
           else
             unsubscribe(dispatch, s)
         })
@@ -55,32 +55,28 @@ const toggle = () => {
   }
 }
 
-const subscribe = (dispatch) => {
-  navigator.serviceWorker.ready.then(sw => {
-    sw.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlB64ToUint8Array(WEB_PUSH_VAPID_PUBLIC_KEY)
-    })
-    .then(s => {
-      var foo = save(dispatch, '/api/subscriptions', {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(s)
-      })
-    })
-    .catch(error => console.log(error))
+const subscribe = (dispatch, sw) => {
+  sw.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: urlB64ToUint8Array(WEB_PUSH_VAPID_PUBLIC_KEY)
   })
+  .then(s => save(dispatch, '/api/subscriptions', {
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify(s)
+  }))
+  .catch(error => dispatch(saveFailed(error.message)))
 }
 
 const unsubscribe = (dispatch, subscription) => {
 
   subscription.unsubscribe()
-
-  return save(`/api/subscriptions/${encodeURIComponent(subscription.endpoint)}`, {
+  .then(() => save(dispatch, `/api/subscriptions?endpoint=${encodeURIComponent(subscription.endpoint)}`, {
     method: 'DELETE',
     credentials: 'include'
-  })
+  }))
+  .catch(error => dispatch(saveFailed(error)))
 }
 
 const save = (dispatch, url, request) => {
@@ -88,6 +84,11 @@ const save = (dispatch, url, request) => {
   
   return fetch(url, request)
     .then(response => {
+      if (!response.headers.get('Content-Type')) {
+        dispatch(saveSucceeded())
+        return
+      }
+
       if (response.headers.get('Content-Type').split(';')[0].toLowerCase().trim() !== 'application/json')
         throw new Error('Error connecting to the server. Please try again!')
 

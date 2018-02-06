@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { toastr } from 'react-redux-toastr'
 
 class Subscribe extends Component {
   constructor () {
@@ -8,6 +9,17 @@ class Subscribe extends Component {
     // as suggested here: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md#es6-classes
     this.subscribe = this.subscribe.bind(this)
     this.state = {}
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.checkSubscriberState(nextProps)
+    this.reset()
+  }
+
+  checkSubscriberState (nextProps) {
+    if (nextProps.subscriber.state === 'error')
+      if (this.props.subscriber.error !== nextProps.subscriber.error)
+        toastr.error(nextProps.subscriber.error)
   }
 
   componentDidMount () {
@@ -31,7 +43,7 @@ class Subscribe extends Component {
       <div>
         {this.state.show && 
         <div className="text-center">
-          <button className="btn btn-primary" onClick={this.subscribe} disabled={this.state.denied || this.state.subscribed}>
+          <button className="btn btn-primary" onClick={this.subscribe} disabled={this.state.denied}>
             Get Notifications &nbsp;
             {this.state.denied && <i className="fa fa-times" aria-hidden="true" />}
             {this.state.subscribed && <i className="fa fa-check" aria-hidden="true" />}
