@@ -26,7 +26,7 @@ class Subscribe extends Component {
     this.reset()
   }
 
-  reset() {
+  reset () {
     this.setState({
       show: 'serviceWorker' in navigator && 'PushManager' in window,
       denied: Notification.permission === 'denied',
@@ -41,7 +41,7 @@ class Subscribe extends Component {
   render () {
     return (
       <div>
-        {this.state.show && 
+        {this.state.show &&
         <div className="text-center">
           <button className="btn btn-primary" onClick={this.subscribe} disabled={this.state.denied}>
             Get Notifications &nbsp;

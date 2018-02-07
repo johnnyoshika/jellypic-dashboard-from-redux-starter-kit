@@ -41,7 +41,7 @@ const saveSucceeded = () => {
 const toggle = () => {
   return (dispatch, getState) => {
     if (!('serviceWorker' in navigator) || !('PushManager' in window))
-      return;
+      return
 
     navigator.serviceWorker.ready.then(sw => {
       sw.pushManager.getSubscription()
@@ -70,7 +70,6 @@ const subscribe = (dispatch, sw) => {
 }
 
 const unsubscribe = (dispatch, subscription) => {
-
   subscription.unsubscribe()
   .then(() => save(dispatch, `/api/subscriptions?endpoint=${encodeURIComponent(subscription.endpoint)}`, {
     method: 'DELETE',
@@ -81,7 +80,6 @@ const unsubscribe = (dispatch, subscription) => {
 
 const save = (dispatch, url, request) => {
   dispatch(changeState('saving'))
-  
   return fetch(url, request)
     .then(response => {
       if (!response.headers.get('Content-Type')) {
@@ -105,6 +103,7 @@ const save = (dispatch, url, request) => {
 }
 
 // source: https://github.com/GoogleChromeLabs/web-push-codelab/blob/master/app/scripts/main.js
+/*eslint-disable */
 const urlB64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding)
@@ -119,6 +118,7 @@ const urlB64ToUint8Array = (base64String) => {
   }
   return outputArray;
 }
+/*eslint-enable */
 
 // ------------------------------------
 // Action Handlers
