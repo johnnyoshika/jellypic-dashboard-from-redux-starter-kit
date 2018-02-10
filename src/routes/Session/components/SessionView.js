@@ -69,13 +69,13 @@ class SessionView extends Component {
             <div className="header-content-icons text-right">
               <div />
               <div>
-                <Uploader><i className="fa fa-camera fa-2x" aria-hidden="true" /></Uploader>
+                <IndexLink to="/"><i className="fa fa-home fa-2x" aria-hidden="true" /></IndexLink>
               </div>
               <div>
                 <Uploader><i className="fa fa-cloud-upload fa-2x" aria-hidden="true" /></Uploader>
               </div>
               <div>
-                <Link to="/login" activeClassName="nav-active"><i className="fa fa-heart fa-2x" aria-hidden="true" /></Link>
+                <Link to="/profile" activeClassName="nav-active"><i className="fa fa-heart fa-2x" aria-hidden="true" /></Link>
               </div>
               <div>
                 <Link to="/profile" activeClassName="nav-active"><i className="fa fa-user fa-2x" aria-hidden="true" /></Link>
