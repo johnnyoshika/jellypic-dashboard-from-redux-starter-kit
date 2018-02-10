@@ -4,6 +4,7 @@ import uploaderReducer from '../modules/uploader'
 import likeStateReducer from '../modules/likeState'
 import commentStateReducer from '../modules/commentState'
 import entitiesReducer from '../modules/entitiesReducer'
+import subscriberReducer from '../modules/subscriber'
 import loginReducer from '../routes/Login/modules/login'
 import sessionReducer from '../routes/Session/modules/session'
 import homeReducer from '../routes/Session/Home/modules/home'
@@ -19,6 +20,7 @@ const makeRootReducer = (asyncReducers) => {
     login: loginReducer,
     session: sessionReducer,
     entities: entitiesReducer,
+    subscriber: subscriberReducer,
     home: homeReducer,
     post: postReducer,
     toastr: toastrReducer,

@@ -25,11 +25,11 @@ class Card extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    this.checkLikState(nextProps)
+    this.checkLikeState(nextProps)
     this.checkCommentState(nextProps)
   }
 
-  checkLikState (nextProps) {
+  checkLikeState (nextProps) {
     if (this.likeState(nextProps.likeState).state === 'error')
       if (this.likeState().error !== this.likeState(nextProps.likeState).error)
         toastr.error(this.likeState(nextProps.likeState).error)

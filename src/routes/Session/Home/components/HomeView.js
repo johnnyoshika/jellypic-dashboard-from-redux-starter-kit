@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../../../../containers/CardContainer'
+import Subscribe from '../../../../containers/SubscribeContainer'
 import ErrorMessage from '../../../../components/ErrorMessage'
 import { selectPost } from '../../../../modules/posts'
 import './HomeView.scss'
@@ -30,6 +31,7 @@ class HomeView extends Component {
       <div className="home-container">
         <div className="gutter" />
         <div className="home-main">
+          <Subscribe />
           {this.props.home.posts.map(id => (
             <Card key={id} post={selectPost(this.props.entities, id)} />
           ))}
